@@ -1,0 +1,13 @@
+.post {
+  margin: 0 auto;
+  width: 500px;
+  padding: 20px;
+  border-bottom: 2px solid #73787e;
+  margin-bottom: 30px;
+}
+
+.userInfo {
+  margin: 0 auto;
+  width: 500px;
+  padding: 20px;
+}

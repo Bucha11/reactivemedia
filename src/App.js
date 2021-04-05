@@ -1,25 +1,32 @@
-import logo from './logo.svg';
-import './App.css';
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import "./App.css";
+import { Main } from "./Components/Main/Main";
+import { setUsersThunk } from "./Redux/Reducer";
+import { NavLink } from "react-router-dom";
 
-function App() {
+export const App = () => {
+  const isFetching = useSelector((state) => state.isFetching);
+
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(setUsersThunk());
+  }, []);
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+      <header>
+        <div className="wrapper">
+          <div className="homeBtn">
+            <NavLink to="/">Home</NavLink>
+          </div>
+          <div className="name">User Control </div>
+          <div className="addBtn">
+            <NavLink to="/login">Add User</NavLink>
+          </div>
+        </div>
       </header>
+      {!isFetching ? <Main /> : "loading"}
     </div>
   );
-}
-
-export default App;
+};
